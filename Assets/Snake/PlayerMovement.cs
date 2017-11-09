@@ -8,15 +8,15 @@ public class PlayerMovement : MonoBehaviour {
 
 	public GameObject bodyPrefab;
 	public List<GameObject> Snake = new List<GameObject>();
-	public float moveSpeed;
 	public float moveTick;
 	public float offsetDistance;
 	
 	float countdown;
 	Moving moving = Moving.UP;
-
+	ScoreKeeper scoreKeeper;
 
 	void Start () {
+		scoreKeeper = FindObjectOfType<ScoreKeeper>();
 		Snake.Add(this.gameObject);
 	}
 
@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void GrowSnake () {
+		//BUG The first body part that gets added overlaps with the head. 
 		Transform lastPart = Snake[Snake.Count - 1].transform;
 		Vector3 newPos = lastPart.position - (lastPart.forward * (1 + offsetDistance));
 		GameObject newPart = Instantiate(bodyPrefab, newPos, transform.rotation);
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		string tag = other.gameObject.tag;
 		if (tag == "Wall" || tag == "Body") {
+			//TODO Get rid of this check once the bug for adding the first body part is fixed.
 			if(Snake.Count > 2) {
 				foreach (GameObject part in Snake) {
 					Destroy(part);
@@ -88,6 +90,7 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 		else if (other.gameObject.tag == "Pickup") {
+			scoreKeeper.AddScore(other.gameObject.GetComponent<Pickup>().points);
 			Destroy(other.gameObject);
 			GrowSnake();
 		}
