@@ -211,47 +211,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &23265484
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 23265486}
-  - component: {fileID: 23265485}
-  m_Layer: 0
-  m_Name: ScoreKeeper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &23265485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 23265484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d442339b253e144bb3b63c556f267ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 390810320}
---- !u!4 &23265486
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 23265484}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7198117, y: -7.621057, z: 17.835743}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381710910
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +298,7 @@ RectTransform:
   m_Children:
   - {fileID: 390810319}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -356,6 +315,7 @@ GameObject:
   - component: {fileID: 390810319}
   - component: {fileID: 390810321}
   - component: {fileID: 390810320}
+  - component: {fileID: 390810322}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -378,8 +338,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 276.6, y: -50}
-  m_SizeDelta: {x: 233.1, y: 60}
+  m_AnchoredPosition: {x: 330, y: -50}
+  m_SizeDelta: {x: 230, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &390810320
 MonoBehaviour:
@@ -420,6 +380,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 390810318}
+--- !u!114 &390810322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 390810318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70977bc242a788c4585df69f8e6cfdfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &562810591
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +527,7 @@ Transform:
   - {fileID: 1663243505}
   - {fileID: 562810592}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950826888
 GameObject:
@@ -710,7 +681,6 @@ GameObject:
   - component: {fileID: 1011187027}
   - component: {fileID: 1011187032}
   - component: {fileID: 1011187031}
-  - component: {fileID: 1011187030}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -730,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1011187027
 MeshRenderer:
@@ -785,17 +755,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011187025}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1011187030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011187025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd6167703226164a83938775f01d6b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1011187031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,7 +768,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyPrefab: {fileID: 1724336892673792, guid: 98c6cea04da11874bbb7ad99bed172ab, type: 2}
   Snake: []
-  moveTick: 0.1
+  moveTick:
+  - 0.2
+  - 0.1
+  - 0.05
   offsetDistance: 0.2
 --- !u!54 &1011187032
 Rigidbody:
@@ -886,7 +848,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039483060
 GameObject:
@@ -915,13 +877,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc1544ec7715045982ae713105b969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arenaDimensions: {x: 22.5, y: 0, z: 22.5}
   pickupPrefab:
   - {fileID: 1253832165277304, guid: 4d1d0724f26beff429e24fa7daf4bcd3, type: 2}
   - {fileID: 1253832165277304, guid: b031c89e3a41bad42b43eec2c8d8d40d, type: 2}
   - {fileID: 1253832165277304, guid: e9c39251da326454d84ec144fc1b6208, type: 2}
   spawnRate: 3
   lifeTime: 10
-  arenaDimensions: {x: 10, y: 0, z: 10}
+  badPickupPrefab: {fileID: 1253832165277304, guid: a776ff661b78c614483d718b4cc0be91,
+    type: 2}
+  badSpawnRate: 5
 --- !u!4 &1039483062
 Transform:
   m_ObjectHideFlags: 0
@@ -933,7 +898,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109161072
 GameObject:

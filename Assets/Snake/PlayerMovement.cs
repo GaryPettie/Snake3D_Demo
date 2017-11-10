@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	enum Moving {UP, DOWN, LEFT, RIGHT };
+	enum Moving { UP, DOWN, LEFT, RIGHT };
+	public enum Difficulty { EASY, MEDUIM, HARD };
 
+	public static int difficulty;
 	public GameObject bodyPrefab;
 	public List<GameObject> Snake = new List<GameObject>();
-	public float moveTick;
+	public float[] moveTick = { 0.2f, 0.1f, 0.05f};
 	public float offsetDistance;
 	
 	float countdown;
 	Moving moving = Moving.UP;
-	ScoreKeeper scoreKeeper;
 
 	void Start () {
-		scoreKeeper = FindObjectOfType<ScoreKeeper>();
 		Snake.Add(this.gameObject);
 	}
 
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 		if(countdown <= 0) {
 			transform.position = transform.position + transform.forward * (1 + offsetDistance);
 			FollowLastBodyPart();
-			countdown = moveTick;
+			countdown = moveTick[difficulty];
 		}
 	}
 
@@ -71,10 +71,12 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FollowLastBodyPart () {
-		if (Snake.Count > 1) {
-			for (int i = Snake.Count - 1; i > 0; i--) {
-				Snake[i].transform.position = Snake[i - 1].transform.position;
-				Snake[i].transform.rotation = Snake[i - 1].transform.rotation;
+		for (int i = Snake.Count - 1; i > 0; i--) {
+			Snake[i].transform.position = Snake[i - 1].transform.position;
+			Snake[i].transform.rotation = Snake[i - 1].transform.rotation;
+			Debug.Log(Snake.Count);
+			if (i == 1) {
+				Snake[i].transform.position = transform.position - transform.forward * (1 + offsetDistance);
 			}
 		}
 	}
@@ -82,17 +84,19 @@ public class PlayerMovement : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		string tag = other.gameObject.tag;
 		if (tag == "Wall" || tag == "Body") {
-			//TODO Get rid of this check once the bug for adding the first body part is fixed.
-			if(Snake.Count > 2) {
-				foreach (GameObject part in Snake) {
-					Destroy(part);
-				}
-			}
-		}
+			KillSnake();
+		} 
 		else if (other.gameObject.tag == "Pickup") {
-			scoreKeeper.AddScore(other.gameObject.GetComponent<Pickup>().points);
+			ScoreKeeper.AddScore(other.gameObject.GetComponent<Pickup>().points);
 			Destroy(other.gameObject);
 			GrowSnake();
 		}
+	}
+
+	void KillSnake () {
+		foreach (GameObject part in Snake) {
+			Destroy(part);
+		}
+		LevelManager.instance.LoadNextLevel();	
 	}
 }
