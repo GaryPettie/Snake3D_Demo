@@ -25,8 +25,8 @@ public class PlayerMovement : MonoBehaviour {
 		UpdateCountdown();
 
 		if(countdown <= 0) {
-			transform.position = transform.position + transform.forward * (1 + offsetDistance);
 			FollowLastBodyPart();
+			transform.position = transform.position + transform.forward * (1 + offsetDistance);
 			countdown = moveTick[difficulty];
 		}
 	}
@@ -74,10 +74,6 @@ public class PlayerMovement : MonoBehaviour {
 		for (int i = Snake.Count - 1; i > 0; i--) {
 			Snake[i].transform.position = Snake[i - 1].transform.position;
 			Snake[i].transform.rotation = Snake[i - 1].transform.rotation;
-			Debug.Log(Snake.Count);
-			if (i == 1) {
-				Snake[i].transform.position = transform.position - transform.forward * (1 + offsetDistance);
-			}
 		}
 	}
 
